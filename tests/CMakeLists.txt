@@ -1,7 +1,7 @@
 find_package(GTest REQUIRED)
 include(GoogleTest)
 
-function(reshuffle_register_test TEST_NAME)
+function(compile_test TEST_NAME)
     # create an executable in which the tests will be stored
     add_executable(${TEST_NAME} ${ARGN})
 
@@ -32,6 +32,6 @@ set(SOURCES
         allocator_test.cpp
 )
 
-reshuffle_register_test(${LIBRARY_NAME}_tests
+compile_test(${LIBRARY_NAME}_tests
         ${SOURCES}
 )
