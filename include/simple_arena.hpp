@@ -13,6 +13,8 @@ public:
     template<TriviallyDestructible T>
     [[nodiscard]] auto create(std::size_t num_elements) noexcept -> T *;
 
+    [[nodiscard]] auto capacity() const noexcept -> std::size_t;
+
     std::byte _buffer[N]{};
 
 private:
@@ -37,6 +39,11 @@ auto SimpleArena<N>::create(std::size_t num_elements) noexcept -> T * {
     }
 
     return nullptr;
+}
+
+template<std::size_t N>
+auto SimpleArena<N>::capacity() const noexcept -> std::size_t {
+    return _capacity;
 }
 
 

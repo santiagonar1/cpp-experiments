@@ -1,5 +1,7 @@
 #include <iostream>
+#include <vector>
 
+#include <allocator.hpp>
 #include <simple_arena.hpp>
 
 int main() {
@@ -32,6 +34,22 @@ int main() {
         *p = 'a';
         std::cout << "allocated a char at " << (void *) p << '\n';
     }
+
+    std::cout << "\n\n ======== Allocator ========\n\n";
+
+    const auto allocator = Allocator<int>{simple_arena};
+    auto values = std::vector<int, Allocator<int>>{allocator};
+
+    std::cout << "capacity arena before: " << simple_arena.capacity() << '\n';
+    for (int i = 0; i < 10; ++i) { values.emplace_back(i); }
+
+    std::cout << values.size() << " values allocated\n";
+    std::cout << "capacity arena after: " << simple_arena.capacity() << '\n';
+    auto delimiter = std::string{};
+    std::cout << "[";
+    for (const auto &value: values) { std::cout << std::exchange(delimiter, ", ") << value; }
+    std::cout << "]\n";
+
 
     return 0;
 }

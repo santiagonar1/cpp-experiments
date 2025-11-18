@@ -29,6 +29,7 @@ endfunction()
 
 set(SOURCES
         simple_arena_test.cpp
+        allocator_test.cpp
 )
 
 reshuffle_register_test(${LIBRARY_NAME}_tests
