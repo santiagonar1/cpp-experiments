@@ -2,15 +2,11 @@
 #define CPP_EXPERIMENTS_SIMPLE_ARENA_HPP
 
 #include <memory>
-#include <type_traits>
-
-template<typename T>
-concept TriviallyDestructible = std::is_trivially_destructible_v<T>;
 
 template<std::size_t N>
 class SimpleArena {
 public:
-    template<TriviallyDestructible T>
+    template<typename T>
     [[nodiscard]] auto create(std::size_t num_elements) noexcept -> T *;
 
     [[nodiscard]] auto capacity() const noexcept -> std::size_t;
@@ -23,7 +19,7 @@ private:
 };
 
 template<std::size_t N>
-template<TriviallyDestructible T>
+template<typename T>
 auto SimpleArena<N>::create(const std::size_t num_elements) noexcept -> T * {
     const auto size = num_elements * sizeof(T);
     if (std::align(alignof(T), size, _ptr, _capacity)) {

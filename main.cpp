@@ -61,6 +61,13 @@ int main() {
     for (const auto &value: values) { std::cout << std::exchange(delimiter, ", ") << value; }
     std::cout << "]\n";
 
+    std::cout << "\n\n ======== Allocator with object ========\n\n";
+    {
+        const auto object_allocator = Allocator<Bar>{simple_arena};
+        auto dummy_values = std::vector<Bar, Allocator<Bar>>{object_allocator};
+        dummy_values.emplace_back();
+    }
+
     std::cout << "\n\n ======== Object Arena ========\n\n";
 
     auto object_arena = ObjectArena{1024};
