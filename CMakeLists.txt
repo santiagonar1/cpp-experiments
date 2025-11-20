@@ -20,6 +20,7 @@ set(EXECUTABLE_NAME ${LIBRARY_NAME}.out)
 
 set(SOURCES
         src/simple_arena.cpp
+        src/object_arena.cpp
 )
 
 add_library(${LIBRARY_NAME}

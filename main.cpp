@@ -2,7 +2,18 @@
 #include <vector>
 
 #include <allocator.hpp>
+#include <object_arena.hpp>
 #include <simple_arena.hpp>
+
+struct Bar {
+    Bar() { std::cout << "constructor bar called" << std::endl; }
+    ~Bar() { std::cout << "destructor bar called" << std::endl; }
+};
+
+struct Foo {
+    Foo() { std::cout << "constructor foo called" << std::endl; }
+    ~Foo() { std::cout << "destructor foo called" << std::endl; }
+};
 
 int main() {
     auto simple_arena = SimpleArena<1024>{};
@@ -50,6 +61,12 @@ int main() {
     for (const auto &value: values) { std::cout << std::exchange(delimiter, ", ") << value; }
     std::cout << "]\n";
 
+    std::cout << "\n\n ======== Object Arena ========\n\n";
+
+    auto object_arena = ObjectArena{1024};
+
+    auto *bar = object_arena.create<Bar>();
+    auto *foo = object_arena.create<Foo>();
 
     return 0;
 }

@@ -30,6 +30,7 @@ endfunction()
 set(SOURCES
         simple_arena_test.cpp
         allocator_test.cpp
+        object_arena_test.cpp
 )
 
 compile_test(${LIBRARY_NAME}_tests
