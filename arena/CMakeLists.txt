@@ -26,7 +26,5 @@ target_link_libraries(${EXECUTABLE_NAME}
         PRIVATE ${LIBRARY_NAME}
 )
 
-enable_testing()
-
 add_subdirectory(tests)
 add_subdirectory(benchmarks)

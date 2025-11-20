@@ -15,4 +15,6 @@ if (APPLE)
     set(CMAKE_OSX_SYSROOT "${SDKROOT}" CACHE PATH "macOS SDK path" FORCE)
 endif ()
 
+enable_testing()
+
 add_subdirectory(arena)
