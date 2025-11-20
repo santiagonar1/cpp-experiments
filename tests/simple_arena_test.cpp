@@ -45,8 +45,8 @@ TEST(SimpleArena, CanBeUsedToAllocateMemory) {
 TEST(SimpleArena, UsesProperMemoryAlignment) {
     auto arena = SimpleArena<512>{};
 
-    auto* ptr_char = arena.create<char>(1);
-    auto* ptr_int = arena.create<int>(1);
+    auto *ptr_char = arena.create<char>(1);
+    auto *ptr_int = arena.create<int>(1);
 
     EXPECT_EQ(reinterpret_cast<std::uintptr_t>(ptr_char) % alignof(char), 0);
     EXPECT_EQ(reinterpret_cast<std::uintptr_t>(ptr_int) % alignof(int), 0);
