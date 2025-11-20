@@ -11,7 +11,7 @@ add_library(${LIBRARY_NAME}
 )
 
 target_include_directories(${LIBRARY_NAME}
-        PUBLIC ${PROJECT_SOURCE_DIR}/include
+        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_compile_features(${LIBRARY_NAME}
