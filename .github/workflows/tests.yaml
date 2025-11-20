@@ -14,7 +14,7 @@ jobs:
   testing:
     name: Run Tests
     runs-on: ubuntu-latest
-    container: santiagonar1/tum-latex:latest
+    container: santiagonar1/cpp-dev:latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
