@@ -24,7 +24,7 @@ private:
 
 template<std::size_t N>
 template<TriviallyDestructible T>
-auto SimpleArena<N>::create(std::size_t num_elements) noexcept -> T * {
+auto SimpleArena<N>::create(const std::size_t num_elements) noexcept -> T * {
     const auto size = num_elements * sizeof(T);
     if (std::align(alignof(T), size, _ptr, _capacity)) {
         // After calling align, _ptr points to the first element of the (aligned) region allocated
