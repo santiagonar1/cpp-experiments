@@ -34,6 +34,8 @@ auto ObjectArena::create(Args &&...args) -> T * {
     constexpr auto size = num_elements * sizeof(T);
     auto *aligned_pointer = static_cast<T *>(std::align(alignof(T), size, _ptr, _capacity));
 
+    if (not aligned_pointer) { return nullptr; }
+
     T *object = new (aligned_pointer) T(std::forward<Args>(args)...);
     _capacity -= size;
     _ptr = reinterpret_cast<std::byte *>(aligned_pointer) + size;
@@ -42,6 +44,8 @@ auto ObjectArena::create(Args &&...args) -> T * {
 
     auto *dtor_aligned_pointer = static_cast<DestructNode *>(
             std::align(alignof(DestructNode), sizeof(DestructNode), _ptr, _capacity));
+
+    if (not dtor_aligned_pointer) { return nullptr; }
 
     auto destructor_call = [](void *obj) { static_cast<T *>(obj)->~T(); };
     auto *node = new (dtor_aligned_pointer) DestructNode{destructor_call, object, _destruct_tail};
