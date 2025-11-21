@@ -13,3 +13,7 @@ RUN apt install -y build-essential \
     python3-virtualenv
 
 RUN pip install conan --break-system-packages
+
+RUN CC=gcc CXX=g++ conan profile detect --name=default
+RUN CC=gcc CXX=g++ conan profile detect --name=gcc
+RUN CC=clang CXX=clang++ conan profile detect --name=clang
