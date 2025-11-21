@@ -6,6 +6,7 @@ ENV TZ=UTC
 RUN apt update -y && apt upgrade -y
 RUN apt install -y build-essential \
     cmake \
+    clang \
     python3 \
     python3-pip \
     python3-venv \
