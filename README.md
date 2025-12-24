@@ -13,14 +13,9 @@ cmake -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake ..
 make
 ```
 
-We also provide a docker image for compiling the project. You can build it with:
+You can also use the [cpp-dev](https://github.com/santiagonar1/dockerfiles/blob/main/cpp-dev.dockerfile) docker image
+to compile and run the code. If you do not want to build it yourself, run:
 
 ```shell
-make docker
-```
-
-Then you can launch the container with:
-
-```shell
-docker run --rm -it -v .:/code -w /code cpp-dev bash
+./run-docker.sh
 ```
