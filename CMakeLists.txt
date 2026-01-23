@@ -18,3 +18,4 @@ endif ()
 enable_testing()
 
 add_subdirectory(arena)
+add_subdirectory(clocks)
