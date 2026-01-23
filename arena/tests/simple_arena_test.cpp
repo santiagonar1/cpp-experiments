@@ -60,9 +60,7 @@ TEST(SimpleArena, CanBeUsedWithAnAllocatorWithComplexObjects) {
         const auto allocator = Allocator<Bar>(simple_arena);
         auto values = std::vector<Bar, Allocator<Bar>>{allocator};
         values.reserve(states.size());
-        for (auto &state: states) {
-            values.emplace_back(state);
-        }
+        for (auto &state: states) { values.emplace_back(state); }
         EXPECT_THAT(states, Eq(std::vector{State::Created, State::Created, State::Created}));
     }
 
