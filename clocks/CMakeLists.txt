@@ -3,6 +3,7 @@ set(EXECUTABLE_NAME ${LIBRARY_NAME}.out)
 
 set(SOURCES
         src/dummy.cpp
+        src/random_generator.cpp
 )
 
 add_library(${LIBRARY_NAME}

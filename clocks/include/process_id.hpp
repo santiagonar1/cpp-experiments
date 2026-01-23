@@ -1,0 +1,6 @@
+#ifndef CPP_EXPERIMENTS_PROCESS_ID_HPP
+#define CPP_EXPERIMENTS_PROCESS_ID_HPP
+
+using ProcessId = unsigned int;
+
+#endif//CPP_EXPERIMENTS_PROCESS_ID_HPP
