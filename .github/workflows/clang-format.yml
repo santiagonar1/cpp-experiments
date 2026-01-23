@@ -19,6 +19,7 @@ jobs:
       matrix:
         path:
           - 'arena'
+          - 'clocks'
 
     steps:
       - name: Check out repository
