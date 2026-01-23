@@ -10,11 +10,9 @@ void say_hi(const unsigned int id) {
 }
 
 int main() {
-    auto threads = std::vector<std::thread>{};
+    auto threads = std::vector<std::jthread>{};
 
     for (unsigned int i = 0; i < 10; ++i) { threads.emplace_back(say_hi, i); }
-
-    for (auto &thread: threads) { thread.join(); }
 
     return 0;
 }
