@@ -1,0 +1,6 @@
+#ifndef CPP_EXPERIMENTS_RANDOM_GENERATOR_HPP
+#define CPP_EXPERIMENTS_RANDOM_GENERATOR_HPP
+
+auto get_random_int(int min, int max) -> int;
+
+#endif//CPP_EXPERIMENTS_RANDOM_GENERATOR_HPP
